@@ -8,7 +8,7 @@ using namespace std;
 
 int main() {
     string line;
-    int user_num;
+    int num_from_user;
 
     srand(time(0));
 
@@ -28,15 +28,15 @@ int main() {
     bool found = false;
     while (!found) {
         cout << "Write a num and try to found it in file: ";
-        cin >> user_num;
+        cin >> num_from_user;
 
         file.open("nums.txt", ios::in);
         if (file.is_open()) {
             found = false;
             while (getline(file, line)) {
                 int current_num = stoi(line);
-                if (current_num == user_num) {
-                    cout << "Num " << user_num << " find in file." << endl;
+                if (current_num == num_from_user) {
+                    cout << "Num " << num_from_user << " find in file." << endl;
                     found = true;
                     break;
                 }
@@ -44,10 +44,10 @@ int main() {
             file.close();
 
             if (!found) {
-                cout << "Num " << user_num << " not found.Add in file." << endl;
-                file.open("nums.txt", ios::app);  
+                cout << "Num " << num_from_user << " not found.Add in file." << endl;
+                file.open("nums.txt", ios::app);
                 if (file.is_open()) {
-                    file << user_num << endl;
+                    file << num_from_user << endl;
                     file.close();
                 }
                 else {
